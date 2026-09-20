@@ -6,14 +6,18 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
 **No C++ compiler, CMake, or Raspberry Pi Pico SDK required!**
 
 <p align="center">
-  <img src="sample_gif/leverless_hadouken_preview_4x.gif" alt="Hadouken Leverless Splash Animation" width="400" />
+  <img src="sample_gif/leverless_hadouken_preview_4x.gif" alt="Hadouken Leverless Splash Animation" width="420" />
   <br>
   <em>Sample: Leverless Hadouken (236+P) Animation (CC0 / Public Domain)</em>
 </p>
 
-> 🎬 **Real Hardware Demo / 実機動作デモ:**  
-> Check out the animated splash in action on a real Haute42 G16:  
-> 👉 **[Watch Video on X (Twitter)](https://x.com/good_wall/status/2101679788842996177)**
+<p align="center">
+  <a href="https://x.com/good_wall/status/2101679788842996177" target="_blank">
+    <img src="assets/demo_video_card.jpg" alt="Watch Real Hardware Demo on X" width="260" />
+  </a>
+  <br>
+  <em>🎬 <strong>Real Hardware Demo / 実機動作デモ:</strong> <a href="https://x.com/good_wall/status/2101679788842996177">Watch on X (Twitter)</a></em>
+</p>
 
 ---
 
