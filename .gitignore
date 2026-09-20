@@ -1,6 +1,6 @@
 # Output firmware files
-firmware_custom.uf2
-firmware_hadouken_sample.uf2
+*.uf2
+!base_firmware/*.uf2
 
 # User custom GIF folder (ignore contents but keep folder)
 custom_gif/*
