@@ -16,9 +16,7 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
     <img src="assets/hardware_demo.gif" alt="Watch Real Hardware Demo on Haute42 G16" width="280" />
   </a>
   <br>
-  <em>🎬 <strong>Real Hardware Demo / 実機動作デモ:</strong> Running continuously on Haute42 G16 OLED (128x64)</em>
-  <br>
-  <a href="https://github.com/waaaaall/haute42-animated-splash/releases/download/v1.0.0/hardware_demo_720p.mp4">📥 Download High-Res MP4 Video</a> | <a href="https://x.com/good_wall/status/2101679788842996177">Watch on X (Twitter)</a>
+  <em>🎬 <strong>Real Hardware Demo / 実機動作デモ:</strong> <a href="https://x.com/good_wall/status/2101679788842996177">Watch on X (Twitter)</a></em>
 </p>
 
 ---
@@ -69,8 +67,8 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
 ## 日本語
 
 ### 📺 実機デモ
-実際の Haute42 G16 でアニメーションが点灯・常時再生されている様子です（クリックでXの元ポストへ）：  
-👉 **[X (Twitter) で実機動画を見る](https://x.com/good_wall/status/2101679788842996177)** / [MP4動画ダウンロード (60fps)](https://github.com/waaaaall/haute42-animated-splash/releases/download/v1.0.0/hardware_demo_720p.mp4)
+実際の Haute42 G16 でアニメーションが点灯・常時再生されている様子はこちらのポストをご覧ください：  
+👉 **[X (Twitter) で実機動画を見る](https://x.com/good_wall/status/2101679788842996177)**
 
 ### ✨ 特徴
 - **環境構築ゼロ**: C++コンパイラやPico SDK、CMakeは一切不要。Pythonスクリプトがビルド済みベースファームウェアに1秒で直接パッチを適用します。
