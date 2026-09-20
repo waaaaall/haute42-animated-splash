@@ -37,7 +37,7 @@ Once initially installed, **upload, preview, and change animations directly from
 #### Step 1: Initial Setup (Flash Firmware Once)
 You only need to perform this step **once** when first setting up your controller:
 
-1. Download **`haute42_animated_splash_v1.1.0.uf2`** from [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) (comes with the Hadouken sample animation pre-loaded).
+1. Download **`haute42_animated_splash_v1.1.0.uf2`** from [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases).
 2. Put your controller into **BOOTSEL mode**:
    - **Method 1 (Hardware BOOT Button - Recommended)**: Unplug controller. Hold the small **BOOT button** (or pinhole on the back/side) while plugging the USB cable into your PC.
    - **Method 2 (Button Shortcut)**: While plugged in normally, hold **`Start + X + Y`** (or `Start + Select + Up`) for 5+ seconds until the screen freezes into boot mode.
@@ -146,7 +146,7 @@ Different controllers use different GPIO pin assignments for buttons, OLED I2C (
 #### Step 1: 初回セットアップ（ファームウェア書き込み：最初の一度だけ）
 この作業は **最初の導入時の一度だけ** 行えばOKです：
 
-1. [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) から **`haute42_animated_splash_v1.1.0.uf2`** をダウンロードします（初期サンプルとして波動拳アニメーションが内蔵されています）。
+1. [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) から **`haute42_animated_splash_v1.1.0.uf2`** をダウンロードします。
 2. Haute42 を **BOOTSEL モード** で接続します：
    - **方法1（BOOTボタン・推奨）**: USBケーブルを抜いた状態で、背面または側面にある小さな **BOOTボタン**（またはピンホール）を押しながら、PCにUSBケーブルを接続します。
    - **方法2（ボタンショートカット）**: 通常接続した状態で、**`Start + X + Y`**（または `Start + Select + Up`）を5秒以上長押しします。画面がフリーズしてブートモードに入ります。
