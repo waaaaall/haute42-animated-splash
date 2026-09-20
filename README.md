@@ -118,6 +118,34 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
 - **Frames**: Up to 128 frames (16 to 48 frames recommended).
 - For details and tips, see [`sample_gif/README.md`](sample_gif/README.md).
 
+### 🕹️ Compatibility & Other RP2040 Controllers
+
+While this repository is tailored and pre-configured out-of-the-box for **Haute42 controllers** (G16, B16, T16, S16, etc. using the `Haute42COSMOX` board target), the animated splash engine and WebConfig direct GIF upload feature are **100% board-agnostic** and can be used on **any RP2040-based arcade controller running GP2040-CE**!
+
+#### Requirements:
+1. **RP2040 Microcontroller** with at least 2 MB Flash memory.
+2. **128 x 64 Monochrome OLED Display** (SSD1306 or SH1106 via I2C or SPI).
+   - *(Note: Controllers with 128 x 32 displays will show the top 32 pixels).*
+3. **Examples of compatible hardware**:
+   - **Flatbox** (Rev 4 / Rev 5 with OLED display addon)
+   - **Fightbox** (RP2040 / B1-PC with OLED)
+   - **Pico Fighting Board** / **RP2040 Advanced Breakout Board** custom builds
+   - **Sallybox**, **BentoBox**, **Mavercade**, etc.
+   - DIY controllers based on Raspberry Pi Pico or RP2040 Pro Micro with a 0.96" OLED screen.
+
+#### How to use on another controller:
+Different controllers use different GPIO pin assignments for buttons, OLED I2C (SDA/SCL), and LEDs. Therefore, you need a firmware binary built for your specific board target:
+
+1. **Build GP2040-CE with animated splash support**:
+   In the GP2040-CE source tree, specify your target board (e.g., `Pico`, `FlatboxRev5`):
+   ```bash
+   export PICO_BOARD=FlatboxRev5  # Replace with your board target
+   cmake -B build -DPICO_BOARD=$PICO_BOARD
+   cmake --build build
+   ```
+2. **Flash the `.uf2` once**: Put your controller into BOOTSEL mode and copy the compiled `.uf2` file.
+3. **Enjoy WebConfig Direct Upload**: Once installed, open `http://192.168.7.1` in your browser. The **WebConfig GUI Direct Upload** feature works identically on all supported controllers—no further reflashing required!
+
 ---
 
 <a name="日本語"></a>
@@ -214,6 +242,34 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
      *（⚠️ 最重要: ここを `0` にすることで「Always On（常時表示）」となり、ボタン画面に切り替わらずアニメーションがずっとループ再生され続けます）*
    - **Display Saver Timeout (minutes)**: **`0`**（画面が自動消灯するのを防ぐ場合は `0`）
 5. ページ下部の **「Save」** ボタンを押し、コントローラーを再接続します。
+
+### 🕹️ Haute42 以外のコントローラーでの利用について
+
+本リポジトリはデフォルトで **Haute42 シリーズ**（G16 / B16 / T16 / S16 など、`Haute42COSMOX` ターゲット）向けにビルド済みファームウェアを提供していますが、内部の Flash アニメーションエンジンおよび WebConfig 直接アップロード機能は **GP2040-CE 共通のコア機能** として動作します。
+
+#### 動作条件:
+1. **Raspberry Pi RP2040 マイコン**（Flashメモリ 2MB以上）を搭載していること。
+2. **128×64 ドットのモノクロ OLED ディスプレイ**（SSD1306 / SH1106 など）を搭載・接続していること。
+   - ※128×32 画面のコントローラーでは上半分（32px分）が表示されます。
+3. **動作対象コントローラーの例**:
+   - **Flatbox**（Rev 4 / Rev 5 など OLED 搭載型）
+   - **Fightbox**（RP2040 / B1-PC などの OLED 搭載モデル）
+   - **Pico Fighting Board** / **RP2040 Advanced Breakout Board** を使った自作アケコン
+   - **Sallybox**, **BentoBox**, **Mavercade** などの各種 GP2040-CE 系レバーレス
+   - Raspberry Pi Pico や RP2040 Pro Micro に 0.96インチ OLED を接続した自作機全般
+
+#### 他のコントローラーで利用する手順:
+コントローラーごとにボタンや OLED（SDA/SCL）の GPIO ピンアサインが異なるため、対象ボード向けのファームウェアを一度ビルドして書き込む必要があります：
+
+1. **対象ボード用にファームウェアをビルドする**:
+   GP2040-CE のソースコード（本パッチ適用済み）にて、お使いのコントローラーのボード名（例: `Pico`, `FlatboxRev5` など）を指定してビルドします：
+   ```bash
+   export PICO_BOARD=FlatboxRev5  # お使いのボード名
+   cmake -B build -DPICO_BOARD=$PICO_BOARD
+   cmake --build build
+   ```
+2. **初回フラッシュ**: コントローラーを BOOTSEL モードにして生成された `.uf2` を書き込みます。
+3. **WebConfig からの直接アップロードを利用**: ファームウェア導入後は、Haute42 と同様にブラウザ（`http://192.168.7.1`）から直接 GIF アニメーションをアップロード・プレビュー・書き換えが可能です！
 
 ---
 
