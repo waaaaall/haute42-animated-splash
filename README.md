@@ -68,17 +68,13 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
 1. Hold the **START** button while plugging the controller into your PC via USB.
 2. Open **`http://192.168.7.1`** in any web browser.
 3. Navigate to **Configuration** → **Display Configuration**.
-4. Configure the settings as shown below:
+4. Configure the following options:
    - **Hardware Options > Enabled**: `Enabled`
    - **Splash Mode**: **`Enabled (Custom Splash Screen)`**
    - **Splash Duration (seconds, 0 for Always On)**: Set to **`0`**  
      *(⚠️ Critical: Setting this to `0` enables "Always On" mode so the animation loops infinitely and never transitions to the button screen!)*
    - **Display Saver Timeout (minutes)**: Set to **`0`** (prevents screen from turning off)
 5. Click **Save** at the bottom of the page and replug your controller.
-
-<p align="center">
-  <img src="assets/webconfig_display_settings.png" alt="GP2040-CE Display Configuration Settings" width="600" />
-</p>
 
 ### 🎨 GIF Requirements & Recommendations
 - **Resolution**: 128 x 64 pixels (recommended).
@@ -139,17 +135,13 @@ Haute42 公式および GP2040-CE 公式のファームウェア書き込み手�
 1. **STARTボタン** を押しながらPCにUSBケーブルを接続します。
 2. Webブラウザで **`http://192.168.7.1`** にアクセスします。
 3. メニューの **「Configuration」** → **「Display Configuration」** を開きます。
-4. 下図のように設定します：
+4. 以下の項目を設定します：
    - **Hardware Options > Enabled**: `Enabled`
    - **Splash Mode**: **`Enabled (Custom Splash Screen)`**
    - **Splash Duration (seconds, 0 for Always On)**: **`0`** に設定  
      *（⚠️ 最重要: ここを `0` にすることで「Always On（常時表示）」となり、ボタン画面に切り替わらずアニメーションがずっとループ再生され続けます）*
    - **Display Saver Timeout (minutes)**: **`0`**（画面が自動消灯するのを防ぐ場合は `0`）
 5. ページ下部の **「Save」** ボタンを押し、コントローラーを再接続します。
-
-<p align="center">
-  <img src="assets/webconfig_display_settings.png" alt="GP2040-CE Display Configuration 設定画面" width="600" />
-</p>
 
 ---
 
