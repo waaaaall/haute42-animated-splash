@@ -89,6 +89,10 @@ Choose any of the following official methods to enter bootloader mode:
 ### ⚙️ WebConfig Settings (Display Configuration for Always-On Animation)
 If your screen switches to the button layout display (e.g. after 5 seconds) instead of continuously looping the animation, configure these options in WebConfig:
 
+<p align="center">
+  <img src="assets/webconfig_display_settings.png" alt="WebConfig Display Configuration Settings" width="680" />
+</p>
+
 1. Hold the **START** button while plugging the controller into your PC via USB.
 2. Open **`http://192.168.7.1`** in any web browser.
 3. Navigate to **Configuration** → **Display Configuration**.
@@ -179,6 +183,10 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
 
 ### ⚙️ WebConfig の設定（常時ループ再生・画面遷移防止）
 もしファームウェア書き込み後に数秒（5秒など）でボタン入力画面に切り替わってしまう場合は、本体側のスプラッシュ時間設定を確認・変更してください：
+
+<p align="center">
+  <img src="assets/webconfig_display_settings.png" alt="WebConfig ディスプレイ設定画面" width="680" />
+</p>
 
 1. **STARTボタン** を押しながらPCにUSBケーブルを接続します。
 2. Webブラウザで **`http://192.168.7.1`** にアクセスします。
