@@ -32,28 +32,35 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
 - **Auto-Formatting**: Automatically scales, centers, and binarizes arbitrary GIFs into 128x64 1-bit monochrome.
 - **Pre-packaged Sample**: Includes a ready-to-flash Hadouken leverless input animation (CC0 / Public Domain).
 
-### 🚀 Quick Start
+### 🚀 Quick Start (Official Flashing Procedure)
 
-#### Option A: Flash Pre-built Sample Firmware (Fastest)
-1. Download `firmware_hadouken_sample.uf2` from [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases).
-2. Unplug your Haute42 controller.
-3. Hold down the **BOOTSEL** button (or UP/BOOT button depending on model) and connect the USB cable to your PC.
-4. A USB storage drive named `RPI-RP2` will appear.
-5. Drag and drop the `.uf2` file into the `RPI-RP2` drive.
-6. The controller will reboot automatically into your new animated splash screen!
+Flashing follows the standard Haute42 & GP2040-CE official update workflow:
 
-#### Option B: Use Your Own Animated GIF
-1. Download or clone this repository:
-   ```bash
-   git clone https://github.com/waaaaall/haute42-animated-splash.git
-   ```
-2. Put your animated GIF into the `custom_gif/` folder (e.g. `custom_gif/my_cool_anim.gif`).
-3. Double-click **`generate_firmware.bat`** (Windows) or run:
-   ```bash
-   python patch_splash.py
-   ```
-4. A newly created **`firmware_custom.uf2`** will appear in the folder!
-5. Flash it to your Haute42 controller following the BOOTSEL instructions above.
+#### Step 1: Prepare the `.uf2` Firmware File
+- **Pre-built Sample**: Download `firmware_hadouken_sample.uf2` from [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases).
+- **Your Own Custom GIF**:
+  1. Clone or download this repository.
+  2. Put your animated GIF into `custom_gif/` (e.g. `custom_gif/my_animation.gif`).
+  3. Double-click `generate_firmware.bat` (or run `python patch_splash.py`).
+  4. Your custom `firmware_custom.uf2` will be generated in the root directory!
+
+#### Step 2: Put Controller into BOOTSEL (`RPI-RP2`) Mode
+Choose any of the following official methods to enter bootloader mode:
+- **Method 1 (Hardware BOOT Button - Recommended)**:
+  Unplug the controller. Locate the small **BOOT button** (or pinhole on the back/side). Hold it down while plugging the USB cable into your PC.
+- **Method 2 (Button Shortcut)**:
+  While connected normally, press and hold **`Start + X + Y`** (or **`Start + Select + Up`**) for 5+ seconds until the screen freezes into boot mode.
+- **Method 3 (WebConfig)**:
+  Hold the **START** button while plugging in USB, open `http://192.168.7.1` in your browser, and click **Reboot > Bootsel**.
+
+#### Step 3: Copy Firmware
+1. Your PC will recognize the controller as a USB drive named **`RPI-RP2`**.
+2. **Drag and drop** your `.uf2` file into the `RPI-RP2` drive.
+3. The drive will automatically disconnect, and the controller will reboot into your new animated splash!
+
+> 💡 **Notes & Troubleshooting:**
+> - Always use a **data-capable USB Type-C cable** (charging-only cables won't work).
+> - If Windows prompts you to "format the drive", **DO NOT FORMAT**. Simply copy the `.uf2` file.
 
 ### 🎨 GIF Requirements & Recommendations
 - **Resolution**: 128 x 64 pixels (recommended).
@@ -78,22 +85,35 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
 - **自動フォーマット**: 異なるサイズのGIFでも、128x64の中央配置・モノクロ2値化へ自動変換。
 - **安全なオリジナルサンプル同梱**: 権利フリー（CC0）な「波動拳コマンド入力アニメーション」を同梱。
 
-### 🚀 クイックスタート
+### 🚀 クイックスタート（本家公式ファームウェア更新手順準拠）
 
-#### 方法A: 完成品サンプルをすぐ試す（最も簡単）
-1. [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) から `firmware_hadouken_sample.uf2` をダウンロードします。
-2. Haute42 コントローラーのUSBケーブルを抜きます。
-3. **BOOTSELボタン**（または天面BOOTキー／上ボタン）を押しながらPCにUSB接続します。
-4. PC上に `RPI-RP2` というUSBドライブが認識されます。
-5. ダウンロードした `.uf2` ファイルを `RPI-RP2` ドライブへドラッグ＆ドロップします。
-6. コントローラーが自動再起動し、アニメーションが再生されます！
+Haute42 公式および GP2040-CE 公式のファームウェア書き込み手順と同一です。
 
-#### 方法B: 自作GIFでファームウェアを作成する
-1. 本リポジトリをダウンロード（ZIP解凍または `git clone`）します。
-2. `custom_gif/` フォルダにお好みのGIF画像を置きます（例: `custom_gif/my_animation.gif`）。
-3. **`generate_firmware.bat`** をダブルクリックして実行します（CLIの場合は `python patch_splash.py`）。
-4. フォルダ直下に **`firmware_custom.uf2`** が生成されます！
-5. 上記の手順に従って `RPI-RP2` ドライブへ書き込んでください。
+#### Step 1: ファームウェア（`.uf2`）を用意する
+- **完成品サンプルをすぐ試す場合**:
+  [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) から `firmware_hadouken_sample.uf2` をダウンロードします。
+- **自作GIFでファームウェアを作成する場合**:
+  1. 本リポジトリをダウンロード（ZIP解凍または `git clone`）します。
+  2. `custom_gif/` フォルダにお好みのGIF画像を置きます（例: `custom_gif/my_animation.gif`）。
+  3. **`generate_firmware.bat`** をダブルクリックして実行します（CLIの場合は `python patch_splash.py`）。
+  4. フォルダ直下に **`firmware_custom.uf2`** が生成されます。
+
+#### Step 2: Haute42 を BOOTSEL（`RPI-RP2`）モードで接続する
+以下のいずれかの方法でコントローラーをブートローダーモードにします（PC上に `RPI-RP2` ドライブが認識されます）：
+- **方法1（BOOTボタン・公式推奨）**:
+  USBケーブルを抜いた状態で、背面またはUSB端子付近にある小さな **BOOTボタン**（またはピンホール）を爪楊枝や指で押しながら、PCにUSBケーブルを接続します。
+- **方法2（ボタン長押しショートカット）**:
+  通常接続した状態で、**`Start + X + Y`**（または **`Start + Select + Up`**）を5秒以上長押しします。画面がフリーズしてブートモードに入ります。
+- **方法3（WebConfig経由）**:
+  **STARTボタン**を押しながらUSB接続し、ブラウザで `http://192.168.7.1` を開いて **「Reboot」→「Bootsel」** を選択します（物理ボタンが押しづらい場合に便利です）。
+
+#### Step 3: ファームウェアを書き込む
+1. PCに認識された **`RPI-RP2`** ドライブ直下に、用意した `.uf2` ファイルをドラッグ＆ドロップ（コピー）します。
+2. コピー完了と同時にドライブが自動で切断され、コントローラーが再起動してアニメーションが再生されます！
+
+> 💡 **注意事項・トラブルシューティング:**
+> - 必ず**データ転送に対応したUSB Type-Cケーブル**をご使用ください（充電専用ケーブルでは認識されません）。
+> - Windowsから「ドライブをフォーマットしますか？」等の警告が出ても、**絶対にフォーマットしないでください**。そのまま `.uf2` をコピーすれば完了します。
 
 ---
 

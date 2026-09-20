@@ -45,12 +45,15 @@ echo.
 echo ========================================================
 echo   [SUCCESS] firmware_custom.uf2 has been created!
 echo ========================================================
+echo Flash instructions (Official Haute42 & GP2040-CE methods):
+echo  1. Put controller into BOOTSEL mode:
+echo     - Hold the small BOOT button while plugging in USB cable, OR
+echo     - Hold Start+X+Y (or Start+Select+Up) for 5 seconds while connected, OR
+echo     - Hold START while connecting -^> open http://192.168.7.1 -^> Reboot -^> Bootsel.
+echo  2. An 'RPI-RP2' USB drive will appear on your PC.
+echo  3. Drag and drop 'firmware_custom.uf2' onto the 'RPI-RP2' drive.
+echo  4. The device will automatically reboot with your new animated splash!
 echo.
-echo Flash instructions:
-echo  1. Unplug your Haute42 G16 controller.
-echo  2. Hold down the BOOTSEL button (or UP button / BOOT key).
-echo  3. Plug the USB cable into your PC (an 'RPI-RP2' drive appears).
-echo  4. Drag and drop 'firmware_custom.uf2' onto the 'RPI-RP2' drive.
-echo  5. The controller will reboot automatically and enjoy your animated splash!
+echo Note: If Windows prompts you to format the drive, do NOT format.
 echo.
 pause
