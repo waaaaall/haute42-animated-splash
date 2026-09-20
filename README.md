@@ -5,6 +5,16 @@
 Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16** (and Haute42 COSMOX OLED 128x64 controllers) running **GP2040-CE v0.7.9**.  
 **No C++ compiler, CMake, or Raspberry Pi Pico SDK required!**
 
+<p align="center">
+  <img src="sample_gif/leverless_hadouken_preview_4x.gif" alt="Hadouken Leverless Splash Animation" width="400" />
+  <br>
+  <em>Sample: Leverless Hadouken (236+P) Animation (CC0 / Public Domain)</em>
+</p>
+
+> 🎬 **Real Hardware Demo / 実機動作デモ:**  
+> Check out the animated splash in action on a real Haute42 G16:  
+> 👉 **[Watch Video on X (Twitter)](https://x.com/good_wall/status/2101679788842996177)**
+
 ---
 
 <a name="english"></a>
@@ -51,6 +61,10 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
 
 <a name="日本語"></a>
 ## 日本語
+
+### 📺 実機デモ
+実際の Haute42 G16 でアニメーションが点灯・常時再生されている様子はこちらのポストをご覧ください：  
+👉 **[X (Twitter) で実機動画を見る](https://x.com/good_wall/status/2101679788842996177)**
 
 ### ✨ 特徴
 - **環境構築ゼロ**: C++コンパイラやPico SDK、CMakeは一切不要。Pythonスクリプトがビルド済みベースファームウェアに1秒で直接パッチを適用します。
