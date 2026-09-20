@@ -62,6 +62,17 @@ Choose any of the following official methods to enter bootloader mode:
 > - Always use a **data-capable USB Type-C cable** (charging-only cables won't work).
 > - If Windows prompts you to "format the drive", **DO NOT FORMAT**. Simply copy the `.uf2` file.
 
+### ⚙️ WebConfig Settings (Ensure Infinite Loop Display)
+If your screen immediately jumps to the button input display upon booting, your controller's saved splash setting may be disabled. Verify with these steps:
+1. Hold the **START** button while plugging the controller into your PC via USB.
+2. Open **`http://192.168.7.1`** in any web browser.
+3. Navigate to **Configuration** → **Display Configuration**.
+4. Set the following:
+   - **Use Display**: `Enabled` (ON)
+   - **Splash Mode**: Set to **`Custom Splash Screen`** (or `Static`).  
+     *(Do **not** set to `Disabled`, or it will skip directly to the button screen)*
+5. Click **Save** at the bottom of the page and replug your controller.
+
 ### 🎨 GIF Requirements & Recommendations
 - **Resolution**: 128 x 64 pixels (recommended).
 - **Color**: Monochrome 1-bit (White on black background recommended).
@@ -114,6 +125,18 @@ Haute42 公式および GP2040-CE 公式のファームウェア書き込み手�
 > 💡 **注意事項・トラブルシューティング:**
 > - 必ず**データ転送に対応したUSB Type-Cケーブル**をご使用ください（充電専用ケーブルでは認識されません）。
 > - Windowsから「ドライブをフォーマットしますか？」等の警告が出ても、**絶対にフォーマットしないでください**。そのまま `.uf2` をコピーすれば完了します。
+
+### ⚙️ WebConfig の設定（常時ループ再生の確認）
+もしファームウェア書き込み後にアニメーションが表示されず、直接ボタン入力画面になってしまう場合は、本体側のスプラッシュ設定が無効化されている可能性があります。以下の手順で設定を確認してください：
+
+1. **STARTボタン** を押しながらPCにUSBケーブルを接続します。
+2. Webブラウザで **`http://192.168.7.1`** にアクセスします。
+3. メニューの **「Configuration」** → **「Display Configuration」** を開きます。
+4. 以下のように設定されていることを確認します：
+   - **Use Display**: `Enabled` (ON)
+   - **Splash Mode**: **`Custom Splash Screen`**（または `Static`）  
+     *（※ここが `Disabled` になっていると、起動時にボタン画面へ即座にスキップされてしまいます）*
+5. ページ下部の **「Save」** ボタンを押し、コントローラーを再接続します。
 
 ---
 
