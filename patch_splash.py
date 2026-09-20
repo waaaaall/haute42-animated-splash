@@ -157,14 +157,21 @@ def parse_uf2_blocks(uf2_bytes: bytes) -> List[dict]:
 def create_uf2_blocks(payload: bytes, start_addr: int = FLASH_SPLASH_ADDR) -> List[dict]:
     """Convert raw byte payload into UF2 block structures."""
     blocks = []
+    # RP2040 BootROM requires payloadSize to be exactly 256 bytes per block.
+    # Pad payload to an exact multiple of PAYLOAD_SIZE (256) with 0xFF (flash erased state).
+    remainder = len(payload) % PAYLOAD_SIZE
+    padded_payload = payload
+    if remainder != 0:
+        padded_payload += b"\xff" * (PAYLOAD_SIZE - remainder)
+
     offset = 0
     cur_addr = start_addr
-    while offset < len(payload):
-        chunk = payload[offset : offset + PAYLOAD_SIZE]
+    while offset < len(padded_payload):
+        chunk = padded_payload[offset : offset + PAYLOAD_SIZE]
         blocks.append({
             "flags": UF2_FLAG_FAMILY_ID,
             "target_addr": cur_addr,
-            "num_bytes": len(chunk),
+            "num_bytes": PAYLOAD_SIZE,
             "family_id": RP2040_FAMILY_ID,
             "data": chunk,
         })
