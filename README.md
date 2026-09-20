@@ -43,14 +43,20 @@ You can update animations using either **Method A (WebConfig GUI)** or **Method 
 
 Once the base animated splash firmware is installed on your controller, you never need to enter BOOTSEL mode or drag-and-drop `.uf2` files again!
 
+<p align="center">
+  <img src="assets/webconfig_animated_splash.png" alt="WebConfig Animated Splash Screen Direct Upload GUI" width="720" />
+</p>
+
 1. Hold the **START** button while plugging the controller into your PC via USB.
 2. Open **`http://192.168.7.1`** in any web browser.
 3. Navigate to **Configuration** → **Display Configuration**.
 4. Scroll down to the **Animated Splash Screen (GIF Direct Upload)** section.
 5. Click **Choose File** and select your favorite animated GIF:
-   - The interactive preview will simulate your OLED display in real time with the actual frame delay.
-   - Adjust the **Brightness Threshold** slider or toggle **Invert Black/White** if needed.
-6. Click **Write Animation to Flash**. The progress bar will indicate flash sector erase and chunk programming progress.
+   - **Real-Time OLED Simulator**: Simulates the 128x64 display with native GIF frame timings and pause/play controls.
+   - **Brightness Threshold Slider**: Fine-tunes monochrome contrast (0–255) with live preview updates.
+   - **Invert Black/White**: Inverts pixels for dark-on-light or light-on-dark themes.
+   - **Flash Info & Safety**: Displays source size, frame count, total duration, and Flash memory usage (up to 512 KB).
+6. Click **Write Animation to Flash**. The progress bar will indicate sector erase and chunk upload progress.
 7. Replug or restart your controller—your new animation plays immediately upon boot!
    - You can also click **Clear Animation from Flash** anytime to revert to the default static splash screen.
 
@@ -138,14 +144,20 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
 
 本ファームウェア導入後は、**BOOTSELボタンを押してファームウェアを書き直す必要はありません**。普段お使いのWebブラウザから直接アニメーションを入れ替えられます：
 
+<p align="center">
+  <img src="assets/webconfig_animated_splash.png" alt="WebConfig アニメーション直接アップロード画面" width="720" />
+</p>
+
 1. **START ボタン** を押しながらコントローラーのUSBケーブルをPCに接続します。
 2. ブラウザで **`http://192.168.7.1`** を開きます。
 3. **Configuration** → **Display Configuration** に移動します。
 4. ページ下部の **Animated Splash Screen (GIF Direct Upload)** セクションへ進みます。
-5. **ファイルを選択** でお好きなGIFアニメーションを選択します。
-   - 画面上のOLEDシミュレータで、実際のフレーム速度に合わせたリアルタイムプレビューが再生されます。
-   - 必要に応じて **Brightness Threshold（二値化しきい値）** スライダーや **Invert Black/White（白黒反転）** を調整できます。
-6. **Write Animation to Flash** ボタンをクリックします。プログレスバーが表示され、Flashメモリへ分割転送されます。
+5. **ファイルを選択** でお好きなGIFアニメーションを選択します：
+   - **リアルタイムOLEDシミュレータ**: 128x64ドットバイドットのOLED表示を再現し、GIF本来のフレームディレイに合わせて滑らかに実機シミュレーションプレビューします。
+   - **Brightness Threshold（二値化しきい値スライダー）**: 白黒の判定しきい値（0〜255）をプレビューを見ながらリアルタイムに微調整できます。
+   - **Invert Black/White（白黒反転チェックボックス）**: 背景黒・文字白 / 背景白・文字黒の切り替えがワンクリックで行えます。
+   - **Flash情報表示**: 元画像サイズ、フレーム数、総再生時間、およびFlash使用量（最大512KBまで対応）が自動算出されます。
+6. **Write Animation to Flash** ボタンをクリックします。プログレスバーが表示され、Flashメモリ（`0x10100000`）へ安全に分割書き込みが行われます。
 7. 書き込み完了！コントローラーを再接続（または再起動）すると、アップロードしたアニメーションが即座に再生されます。
    - 初期状態（静止画ロゴ）に戻したい時は **Clear Animation from Flash** ボタンを押すだけでいつでも初期化できます。
 
