@@ -44,7 +44,9 @@ You can update animations using either **Method A (WebConfig GUI)** or **Method 
 Once the base animated splash firmware is installed on your controller, you never need to enter BOOTSEL mode or drag-and-drop `.uf2` files again!
 
 <p align="center">
-  <img src="assets/webconfig_animated_splash.png" alt="WebConfig Animated Splash Screen Direct Upload GUI" width="720" />
+  <img src="assets/webconfig_upload_demo.gif" alt="WebConfig Animated Splash Screen Direct Upload Live Demo" width="760" />
+  <br>
+  <em>Live Demo: Selecting GIF, real-time OLED simulation preview, and direct Flash memory write</em>
 </p>
 
 1. Hold the **START** button while plugging the controller into your PC via USB.
@@ -145,7 +147,9 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
 本ファームウェア導入後は、**BOOTSELボタンを押してファームウェアを書き直す必要はありません**。普段お使いのWebブラウザから直接アニメーションを入れ替えられます：
 
 <p align="center">
-  <img src="assets/webconfig_animated_splash.png" alt="WebConfig アニメーション直接アップロード画面" width="720" />
+  <img src="assets/webconfig_upload_demo.gif" alt="WebConfig アニメーション直接アップロード 実機デモ" width="760" />
+  <br>
+  <em>実画面デモ: GIF選択、128x64 OLEDリアルタイムプレビュー再生、Flashへの直接書き込み完了まで</em>
 </p>
 
 1. **START ボタン** を押しながらコントローラーのUSBケーブルをPCに接続します。
