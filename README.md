@@ -62,16 +62,23 @@ Choose any of the following official methods to enter bootloader mode:
 > - Always use a **data-capable USB Type-C cable** (charging-only cables won't work).
 > - If Windows prompts you to "format the drive", **DO NOT FORMAT**. Simply copy the `.uf2` file.
 
-### ⚙️ WebConfig Settings (Ensure Infinite Loop Display)
-If your screen immediately jumps to the button input display upon booting, your controller's saved splash setting may be disabled. Verify with these steps:
+### ⚙️ WebConfig Settings (Display Configuration for Always-On Animation)
+If your screen switches to the button layout display (e.g. after 5 seconds) instead of continuously looping the animation, configure these options in WebConfig:
+
 1. Hold the **START** button while plugging the controller into your PC via USB.
 2. Open **`http://192.168.7.1`** in any web browser.
 3. Navigate to **Configuration** → **Display Configuration**.
-4. Set the following:
-   - **Use Display**: `Enabled` (ON)
-   - **Splash Mode**: Set to **`Custom Splash Screen`** (or `Static`).  
-     *(Do **not** set to `Disabled`, or it will skip directly to the button screen)*
+4. Configure the settings as shown below:
+   - **Hardware Options > Enabled**: `Enabled`
+   - **Splash Mode**: **`Enabled (Custom Splash Screen)`**
+   - **Splash Duration (seconds, 0 for Always On)**: Set to **`0`**  
+     *(⚠️ Critical: Setting this to `0` enables "Always On" mode so the animation loops infinitely and never transitions to the button screen!)*
+   - **Display Saver Timeout (minutes)**: Set to **`0`** (prevents screen from turning off)
 5. Click **Save** at the bottom of the page and replug your controller.
+
+<p align="center">
+  <img src="assets/webconfig_display_settings.png" alt="GP2040-CE Display Configuration Settings" width="600" />
+</p>
 
 ### 🎨 GIF Requirements & Recommendations
 - **Resolution**: 128 x 64 pixels (recommended).
@@ -126,17 +133,23 @@ Haute42 公式および GP2040-CE 公式のファームウェア書き込み手�
 > - 必ず**データ転送に対応したUSB Type-Cケーブル**をご使用ください（充電専用ケーブルでは認識されません）。
 > - Windowsから「ドライブをフォーマットしますか？」等の警告が出ても、**絶対にフォーマットしないでください**。そのまま `.uf2` をコピーすれば完了します。
 
-### ⚙️ WebConfig の設定（常時ループ再生の確認）
-もしファームウェア書き込み後にアニメーションが表示されず、直接ボタン入力画面になってしまう場合は、本体側のスプラッシュ設定が無効化されている可能性があります。以下の手順で設定を確認してください：
+### ⚙️ WebConfig の設定（常時ループ再生・画面遷移防止）
+もしファームウェア書き込み後に数秒（5秒など）でボタン入力画面に切り替わってしまう場合は、本体側のスプラッシュ時間設定を確認・変更してください：
 
 1. **STARTボタン** を押しながらPCにUSBケーブルを接続します。
 2. Webブラウザで **`http://192.168.7.1`** にアクセスします。
 3. メニューの **「Configuration」** → **「Display Configuration」** を開きます。
-4. 以下のように設定されていることを確認します：
-   - **Use Display**: `Enabled` (ON)
-   - **Splash Mode**: **`Custom Splash Screen`**（または `Static`）  
-     *（※ここが `Disabled` になっていると、起動時にボタン画面へ即座にスキップされてしまいます）*
+4. 下図のように設定します：
+   - **Hardware Options > Enabled**: `Enabled`
+   - **Splash Mode**: **`Enabled (Custom Splash Screen)`**
+   - **Splash Duration (seconds, 0 for Always On)**: **`0`** に設定  
+     *（⚠️ 最重要: ここを `0` にすることで「Always On（常時表示）」となり、ボタン画面に切り替わらずアニメーションがずっとループ再生され続けます）*
+   - **Display Saver Timeout (minutes)**: **`0`**（画面が自動消灯するのを防ぐ場合は `0`）
 5. ページ下部の **「Save」** ボタンを押し、コントローラーを再接続します。
+
+<p align="center">
+  <img src="assets/webconfig_display_settings.png" alt="GP2040-CE Display Configuration 設定画面" width="600" />
+</p>
 
 ---
 
