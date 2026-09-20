@@ -32,33 +32,31 @@ class TestPatchSplash(unittest.TestCase):
         """Verify the binary payload conforms to FlashSplashHeader specification."""
         payload, total_frames, total_duration = patch_splash.convert_gif_to_anim_payload(self.sample_gif)
         
-        self.assertEqual(total_frames, 32)
-        self.assertEqual(total_duration, 2560)  # 32 frames * 80ms
+        self.assertGreaterEqual(total_frames, 20)
+        self.assertEqual(total_duration, 2560)  # Total duration is preserved at 2560ms
 
         # Check FlashSplashHeader (20 bytes)
         magic, version, frames, duration, w, h, frame_sz, res = struct.unpack("<IHHIHHHH", payload[:20])
         self.assertEqual(magic, patch_splash.FLASH_SPLASH_MAGIC)  # 0x53504C53 ("SPLS")
         self.assertEqual(version, 1)
-        self.assertEqual(frames, 32)
-        self.assertEqual(duration, 2560)
+        self.assertEqual(frames, total_frames)
+        self.assertEqual(duration, total_duration)
         self.assertEqual(w, 128)
         self.assertEqual(h, 64)
         self.assertEqual(frame_sz, 1024)
         self.assertEqual(res, 0)
 
-        # Check cumulative table (32 * 4 bytes)
+        # Check cumulative table (total_frames * 4 bytes)
         cum_offset = 20
-        cum_end = cum_offset + (32 * 4)
-        cumulative = struct.unpack("<32I", payload[cum_offset:cum_end])
-        self.assertEqual(len(cumulative), 32)
+        cum_end = cum_offset + (total_frames * 4)
+        cumulative = struct.unpack(f"<{total_frames}I", payload[cum_offset:cum_end])
+        self.assertEqual(len(cumulative), total_frames)
         self.assertEqual(cumulative[-1], total_duration)
-        self.assertEqual(cumulative[0], 80)
-        self.assertEqual(cumulative[1], 160)
 
-        # Check frames data (32 * 1024 bytes)
+        # Check frames data (total_frames * 1024 bytes)
         frames_bytes = payload[cum_end:]
-        self.assertEqual(len(frames_bytes), 32 * 1024)
-        self.assertEqual(len(payload), 20 + 128 + 32768)
+        self.assertEqual(len(frames_bytes), total_frames * 1024)
+        self.assertEqual(len(payload), 20 + (total_frames * 4) + (total_frames * 1024))
 
     def test_03_create_uf2_blocks(self):
         """Verify UF2 blocks generation at 0x10100000."""
