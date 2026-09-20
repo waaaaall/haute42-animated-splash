@@ -1,14 +1,14 @@
-# Haute42 Animated Splash Screen UF2 Patcher
+# Haute42 Animated Splash Screen for GP2040-CE
 
 [English](#english) | [日本語](#日本語)
 
-Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16** (and Haute42 COSMOX OLED 128x64 controllers) running **GP2040-CE v0.7.9**.  
-**No C++ compiler, CMake, or Raspberry Pi Pico SDK required!**
+Easily play custom 128x64 animated GIF splash screens on your **Haute42 G16** (and RP2040 OLED controllers) running **GP2040-CE**.  
+Once initially installed, **upload, preview, and change animations directly from your web browser without ever touching the BOOTSEL button or re-flashing firmware!**
 
 <p align="center">
   <img src="sample_gif/leverless_hadouken_preview_4x.gif" alt="Hadouken Leverless Splash Animation" width="400" />
   <br>
-  <em>Sample: Leverless Hadouken (236+P) Animation (CC0 / Public Domain)</em>
+  <em>Pre-packaged Sample: Leverless Hadouken (236+P) Animation (CC0 / Public Domain)</em>
 </p>
 
 <p align="center">
@@ -25,23 +25,30 @@ Easily inject custom 128x64 animated GIF splash screens into your **Haute42 G16*
 ## English
 
 ### ✨ Features
-- **WebConfig GUI Direct Upload**: Upload animated GIFs directly through your browser (`http://192.168.7.1`) into controller Flash memory with real-time OLED simulation preview—no firmware reflashing or BOOTSEL button required!
-- **No Compilation Needed**: Pre-patched firmware or 1-second Python offline patcher—no C++ compiler, CMake, or Pico SDK required.
-- **Easy Windows Workflow**: Place your GIF into `custom_gif/` and double-click `generate_firmware.bat` for offline `.uf2` generation.
+- **WebConfig Direct Upload**: Upload any animated GIF through your browser (`http://192.168.7.1`) into controller Flash memory.
+- **Interactive OLED Simulator**: Real-time 128x64 preview with native GIF frame timings, brightness threshold slider, and black/white inversion.
+- **Flash Once, Update in Browser**: Firmware flashing via BOOTSEL is only required once during initial setup. Updating animations afterwards is done 100% through the browser!
 - **Infinite Looping Splash**: Plays smooth animated loops continuously without exiting to the button display.
-- **Variable Frame Delay**: Accurately preserves individual frame timings from your GIF.
 - **Auto-Formatting**: Automatically scales, centers, and binarizes arbitrary GIFs into 128x64 1-bit monochrome.
-- **Pre-packaged Sample**: Includes a ready-to-flash Hadouken leverless input animation (CC0 / Public Domain).
+- **Pre-packaged Sample**: Includes a ready-to-use Hadouken leverless input animation (CC0 / Public Domain).
 
-### 🚀 Usage Methods
+### 🚀 Quick Start Guide
 
-You can update animations using either **Method A (WebConfig GUI)** or **Method B (UF2 File Flash)**:
+#### Step 1: Initial Setup (Flash Firmware Once)
+You only need to perform this step **once** when first setting up your controller:
 
----
+1. Download **`firmware_hadouken_sample.uf2`** (or `GP2040-CE_0.7.9_Haute42COSMOX_base.uf2`) from [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases).
+2. Put your controller into **BOOTSEL mode**:
+   - **Method 1 (Hardware BOOT Button - Recommended)**: Unplug controller. Hold the small **BOOT button** (or pinhole on the back/side) while plugging the USB cable into your PC.
+   - **Method 2 (Button Shortcut)**: While plugged in normally, hold **`Start + X + Y`** (or `Start + Select + Up`) for 5+ seconds until the screen freezes into boot mode.
+   - **Method 3 (WebConfig)**: Hold the **START** button while plugging in USB, open `http://192.168.7.1` in your browser, and click **Reboot > Bootsel**.
+3. A USB drive named **`RPI-RP2`** will appear on your PC. Drag and drop your `.uf2` file into the `RPI-RP2` drive.
+4. The drive will automatically disconnect, and the controller will reboot into the animated splash!
 
-#### 🌐 Method A: WebConfig GUI Direct Upload (Recommended — No Re-flashing Needed!)
+> 💡 *Note: From now on, you never need to repeat Step 1 or enter BOOTSEL mode to change animations!*
 
-Once the base animated splash firmware is installed on your controller, you never need to enter BOOTSEL mode or drag-and-drop `.uf2` files again!
+#### Step 2: Upload & Update Animations via WebConfig GUI
+Whenever you want to change or test a new animation:
 
 <p align="center">
   <img src="assets/webconfig_upload_demo.gif" alt="WebConfig Animated Splash Screen Direct Upload Live Demo" width="760" />
@@ -53,48 +60,16 @@ Once the base animated splash firmware is installed on your controller, you neve
 2. Open **`http://192.168.7.1`** in any web browser.
 3. Navigate to **Configuration** → **Display Configuration**.
 4. Scroll down to the **Animated Splash Screen (GIF Direct Upload)** section.
-5. Click **Choose File** and select your favorite animated GIF:
+5. Click **Choose File** and select any animated GIF:
    - **Real-Time OLED Simulator**: Simulates the 128x64 display with native GIF frame timings and pause/play controls.
    - **Brightness Threshold Slider**: Fine-tunes monochrome contrast (0–255) with live preview updates.
    - **Invert Black/White**: Inverts pixels for dark-on-light or light-on-dark themes.
-   - **Flash Info & Safety**: Displays source size, frame count, total duration, and Flash memory usage (up to 512 KB).
+   - **Flash Info**: Displays source size, frame count, total duration, and Flash memory usage (up to 512 KB).
 6. Click **Write Animation to Flash**. The progress bar will indicate sector erase and chunk upload progress.
 7. Replug or restart your controller—your new animation plays immediately upon boot!
    - You can also click **Clear Animation from Flash** anytime to revert to the default static splash screen.
 
----
-
-#### 📦 Method B: UF2 Firmware Patcher (Offline Flashing)
-
-If you prefer flashing a standalone `.uf2` binary file:
-
-##### Step 1: Prepare the `.uf2` Firmware File
-- **Pre-built Sample**: Download `firmware_hadouken_sample.uf2` from [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases).
-- **Your Own Custom GIF**:
-  1. Clone or download this repository.
-  2. Put your animated GIF into `custom_gif/` (e.g. `custom_gif/my_animation.gif`).
-  3. Double-click `generate_firmware.bat` (or run `python patch_splash.py`).
-  4. Your custom `firmware_custom.uf2` will be generated in the root directory!
-
-##### Step 2: Put Controller into BOOTSEL (`RPI-RP2`) Mode
-Choose any of the following official methods to enter bootloader mode:
-- **Method 1 (Hardware BOOT Button - Recommended)**:
-  Unplug the controller. Locate the small **BOOT button** (or pinhole on the back/side). Hold it down while plugging the USB cable into your PC.
-- **Method 2 (Button Shortcut)**:
-  While connected normally, press and hold **`Start + X + Y`** (or **`Start + Select + Up`**) for 5+ seconds until the screen freezes into boot mode.
-- **Method 3 (WebConfig)**:
-  Hold the **START** button while plugging in USB, open `http://192.168.7.1` in your browser, and click **Reboot > Bootsel**.
-
-##### Step 3: Copy Firmware
-1. Your PC will recognize the controller as a USB drive named **`RPI-RP2`**.
-2. **Drag and drop** your `.uf2` file into the `RPI-RP2` drive.
-3. The drive will automatically disconnect, and the controller will reboot into your new animated splash!
-
-> 💡 **Notes & Troubleshooting:**
-> - Always use a **data-capable USB Type-C cable** (charging-only cables won't work).
-> - If Windows prompts you to "format the drive", **DO NOT FORMAT**. Simply copy the `.uf2` file.
-
-### ⚙️ WebConfig Settings (Display Configuration for Always-On Animation)
+#### Step 3: WebConfig Settings (Display Configuration for Always-On Animation)
 If your screen switches to the button layout display (e.g. after 5 seconds) instead of continuously looping the animation, configure these options in WebConfig:
 
 <p align="center">
@@ -112,6 +87,8 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
    - **Display Saver Timeout (minutes)**: Set to **`0`** (prevents screen from turning off)
 5. Click **Save** at the bottom of the page and replug your controller.
 
+*(Note: For offline/CLI patching without WebConfig, `patch_splash.py` and `generate_firmware.bat` are also included in the repository.)*
+
 ### 🎨 GIF Requirements & Recommendations
 - **Resolution**: 128 x 64 pixels (recommended).
 - **Color**: Monochrome 1-bit (White on black background recommended).
@@ -120,7 +97,7 @@ If your screen switches to the button layout display (e.g. after 5 seconds) inst
 
 ### 🕹️ Compatibility & Other RP2040 Controllers
 
-While this repository is tailored and pre-configured out-of-the-box for **Haute42 controllers** (G16, B16, T16, S16, etc. using the `Haute42COSMOX` board target), the animated splash engine and WebConfig direct GIF upload feature are **100% board-agnostic** and can be used on **any RP2040-based arcade controller running GP2040-CE**!
+While this repository is pre-configured out-of-the-box for **Haute42 controllers** (G16, B16, T16, S16, etc. using the `Haute42COSMOX` board target), the animated splash engine and WebConfig direct GIF upload feature are **100% board-agnostic** and can be used on **any RP2040-based arcade controller running GP2040-CE**!
 
 #### Requirements:
 1. **RP2040 Microcontroller** with at least 2 MB Flash memory.
@@ -156,23 +133,31 @@ Different controllers use different GPIO pin assignments for buttons, OLED I2C (
 👉 **[X (Twitter) で実機動画を見る](https://x.com/good_wall/status/2101679788842996177)**
 
 ### ✨ 特徴
-- **WebConfig GUI からの直接アップロード**: 一度導入すれば、次回以降はブラウザ画面（`http://192.168.7.1`）から直接GIFを選択・OLEDシミュレーションプレビューしながらFlashメモリへ直接書き込み可能！BOOTSELモードや再フラッシュは一切不要。
-- **環境構築ゼロ**: C++コンパイラやPico SDK、CMakeは一切不要。Pythonスクリプトがビルド済みベースファームウェアに1秒で直接パッチを適用（オフライン作成も可能）。
-- **直感的な操作**: `custom_gif/` フォルダにお好みのGIFを入れて `generate_firmware.bat` をダブルクリックするだけでも `.uf2` を生成可能。
-- **常時ループ再生**: 起動後もボタン画面に遷移せず、滑らかなアニメーションを常時無限ループ再生します。
+- **WebConfig GUI からの直接アップロード**: 一度ファームウェアを導入すれば、普段のWebブラウザ（`http://192.168.7.1`）から直接GIFを選択・プレビュー・書き込み可能！BOOTSELモードやファームウェアの再フラッシュは一切不要。
+- **リアルタイムOLEDシミュレータ**: 実機同様の128x64ドット表示とフレームレートをブラウザ上で忠実に再現。白黒二値化しきい値や反転もスライダーでリアルタイム調整可能。
+- **初回導入のみでずっと使える**: BOOTSELモードでのファームウェア書き込みは最初の1回だけ。日常のアニメーション更新はブラウザだけで完結します。
+- **常時ループ再生**: 起動後もボタン入力画面に切り替わらず、滑らかなアニメーションを常時無限ループ再生。
 - **可変フレームレート対応**: GIF本来のコマごとのディレイ（緩急）を忠実に再現。
 - **自動フォーマット**: 異なるサイズのGIFでも、128x64の中央配置・モノクロ2値化へ自動変換。
-- **安全なオリジナルサンプル同梱**: 権利フリー（CC0）な「波動拳コマンド入力アニメーション」を同梱。
+- **安心のオリジナルサンプル同梱**: 権利フリー（CC0）な「波動拳コマンド入力アニメーション」を同梱。
 
-### 🚀 アニメーション更新方法
+### 🚀 クイックスタートガイド
 
-アニメーションの更新は **方法A（WebConfig GUIからの直接更新）** または **方法B（UF2ファイルによる一括書き込み）** のどちらでも行えます：
+#### Step 1: 初回セットアップ（ファームウェア書き込み：最初の一度だけ）
+この作業は **最初の導入時の一度だけ** 行えばOKです：
 
----
+1. [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) から **`firmware_hadouken_sample.uf2`**（または `GP2040-CE_0.7.9_Haute42COSMOX_base.uf2`）をダウンロードします。
+2. Haute42 を **BOOTSEL モード** で接続します：
+   - **方法1（BOOTボタン・推奨）**: USBケーブルを抜いた状態で、背面または側面にある小さな **BOOTボタン**（またはピンホール）を押しながら、PCにUSBケーブルを接続します。
+   - **方法2（ボタンショートカット）**: 通常接続した状態で、**`Start + X + Y`**（または `Start + Select + Up`）を5秒以上長押しします。画面がフリーズしてブートモードに入ります。
+   - **方法3（WebConfig）**: STARTボタンを押しながらUSB接続し、ブラウザで `http://192.168.7.1` を開いて **「Reboot」→「Bootsel」** を選択します。
+3. PCに認識された **`RPI-RP2`** ドライブ直下に、ダウンロードした `.uf2` ファイルをドラッグ＆ドロップ（コピー）します。
+4. ドライブが自動切断され、コントローラーが再起動してアニメーションが再生されます！
 
-#### 🌐 方法A: WebConfig GUI からの直接アップロード（推奨・再フラッシュ不要！）
+> 💡 *次回以降、アニメーションを変更する際に BOOTSEL モードやファームウェアの再書き込みを行う必要はありません！*
 
-本ファームウェア導入後は、**BOOTSELボタンを押してファームウェアを書き直す必要はありません**。普段お使いのWebブラウザから直接アニメーションを入れ替えられます：
+#### Step 2: WebConfig からアニメーションを更新・登録
+アニメーションを差し替えたい時は、いつでもブラウザから簡単に行えます：
 
 <p align="center">
   <img src="assets/webconfig_upload_demo.gif" alt="WebConfig アニメーション直接アップロード 実機デモ" width="760" />
@@ -185,48 +170,16 @@ Different controllers use different GPIO pin assignments for buttons, OLED I2C (
 3. **Configuration** → **Display Configuration** に移動します。
 4. ページ下部の **Animated Splash Screen (GIF Direct Upload)** セクションへ進みます。
 5. **ファイルを選択** でお好きなGIFアニメーションを選択します：
-   - **リアルタイムOLEDシミュレータ**: 128x64ドットバイドットのOLED表示を再現し、GIF本来のフレームディレイに合わせて滑らかに実機シミュレーションプレビューします。
-   - **Brightness Threshold（二値化しきい値スライダー）**: 白黒の判定しきい値（0〜255）をプレビューを見ながらリアルタイムに微調整できます。
-   - **Invert Black/White（白黒反転チェックボックス）**: 背景黒・文字白 / 背景白・文字黒の切り替えがワンクリックで行えます。
-   - **Flash情報表示**: 元画像サイズ、フレーム数、総再生時間、およびFlash使用量（最大512KBまで対応）が自動算出されます。
-6. **Write Animation to Flash** ボタンをクリックします。プログレスバーが表示され、Flashメモリ（`0x10100000`）へ安全に分割書き込みが行われます。
-7. 書き込み完了！コントローラーを再接続（または再起動）すると、アップロードしたアニメーションが即座に再生されます。
-   - 初期状態（静止画ロゴ）に戻したい時は **Clear Animation from Flash** ボタンを押すだけでいつでも初期化できます。
+   - **リアルタイムOLEDシミュレータ**: 128x64の表示とフレームディレイを忠実にプレビュー。
+   - **Brightness Threshold（二値化しきい値スライダー）**: 白黒の判定しきい値（0〜255）をプレビューを見ながらリアルタイム調整。
+   - **Invert Black/White（白黒反転）**: 背景黒・文字白 / 背景白・文字黒をワンクリックで切り替え。
+   - **Flash情報表示**: 元画像サイズ、フレーム数、総再生時間、およびFlash使用量（最大512KBまで対応）が自動算出。
+6. **Write Animation to Flash** ボタンをクリックします。プログレスバーが進み、Flashメモリへ安全に直接書き込まれます。
+7. コントローラーを再接続（または再起動）すると、アップロードしたアニメーションが即座に再生されます！
+   - 元に戻したい時は **Clear Animation from Flash** ボタンを押すだけでいつでも初期化できます。
 
----
-
-#### 📦 方法B: UF2 パッチャーによる一括書き込み（オフライン）
-
-単体の `.uf2` ファームウェアファイルとして書き込みたい場合の手順です：
-
-##### Step 1: ファームウェア（`.uf2`）を用意する
-- **完成品サンプルをすぐ試す場合**:
-  [GitHub Releases](https://github.com/waaaaall/haute42-animated-splash/releases) から `firmware_hadouken_sample.uf2` をダウンロードします。
-- **自作GIFでファームウェアを作成する場合**:
-  1. 本リポジトリをダウンロード（ZIP解凍または `git clone`）します。
-  2. `custom_gif/` フォルダにお好みのGIF画像を置きます（例: `custom_gif/my_animation.gif`）。
-  3. **`generate_firmware.bat`** をダブルクリックして実行します（CLIの場合は `python patch_splash.py`）。
-  4. フォルダ直下に **`firmware_custom.uf2`** が生成されます。
-
-##### Step 2: Haute42 を BOOTSEL（`RPI-RP2`）モードで接続する
-以下のいずれかの方法でコントローラーをブートローダーモードにします（PC上に `RPI-RP2` ドライブが認識されます）：
-- **方法1（BOOTボタン・公式推奨）**:
-  USBケーブルを抜いた状態で、背面またはUSB端子付近にある小さな **BOOTボタン**（またはピンホール）を爪楊枝や指で押しながら、PCにUSBケーブルを接続します。
-- **方法2（ボタン長押しショートカット）**:
-  通常接続した状態で、**`Start + X + Y`**（または **`Start + Select + Up`**）を5秒以上長押しします。画面がフリーズしてブートモードに入ります。
-- **方法3（WebConfig経由）**:
-  **STARTボタン**を押しながらUSB接続し、ブラウザで `http://192.168.7.1` を開いて **「Reboot」→「Bootsel」** を選択します（物理ボタンが押しづらい場合に便利です）。
-
-##### Step 3: ファームウェアを書き込む
-1. PCに認識された **`RPI-RP2`** ドライブ直下に、用意した `.uf2` ファイルをドラッグ＆ドロップ（コピー）します。
-2. コピー完了と同時にドライブが自動で切断され、コントローラーが再起動してアニメーションが再生されます！
-
-> 💡 **注意事項・トラブルシューティング:**
-> - 必ず**データ転送に対応したUSB Type-Cケーブル**をご使用ください（充電専用ケーブルでは認識されません）。
-> - Windowsから「ドライブをフォーマットしますか？」等の警告が出ても、**絶対にフォーマットしないでください**。そのまま `.uf2` をコピーすれば完了します。
-
-### ⚙️ WebConfig の設定（常時ループ再生・画面遷移防止）
-もしファームウェア書き込み後に数秒（5秒など）でボタン入力画面に切り替わってしまう場合は、本体側のスプラッシュ時間設定を確認・変更してください：
+#### Step 3: WebConfig の設定（常時ループ再生）
+アニメーションを途中でボタン画面に切り替えず、常時ループ再生させたい場合は以下を設定します：
 
 <p align="center">
   <img src="assets/webconfig_display_settings.png" alt="WebConfig ディスプレイ設定画面" width="680" />
@@ -242,6 +195,14 @@ Different controllers use different GPIO pin assignments for buttons, OLED I2C (
      *（⚠️ 最重要: ここを `0` にすることで「Always On（常時表示）」となり、ボタン画面に切り替わらずアニメーションがずっとループ再生され続けます）*
    - **Display Saver Timeout (minutes)**: **`0`**（画面が自動消灯するのを防ぐ場合は `0`）
 5. ページ下部の **「Save」** ボタンを押し、コントローラーを再接続します。
+
+*(※補足: WebConfig を使わずオフラインで Python スクリプトから一括パッチ適用したい場合は、リポジトリ同梱の `patch_splash.py` / `generate_firmware.bat` も引き続きご利用いただけます。)*
+
+### 🎨 GIFの推奨仕様
+- **解像度**: 128 x 64 ピクセル（推奨）。
+- **カラー**: モノクロ 2値（黒背景に白描画を推奨）。
+- **フレーム数**: 最大 128フレーム（16〜48フレーム程度が最も滑らかで扱いやすいです）。
+- 詳細は [`sample_gif/README.md`](sample_gif/README.md) をご覧ください。
 
 ### 🕹️ Haute42 以外のコントローラーでの利用について
 
