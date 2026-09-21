@@ -1,6 +1,6 @@
 # Haute42 Animated Splash Screen for GP2040-CE
 
-[English](#english) | [日本語](#日本語)
+[English](#english) | [日本語](#日本語) | [Changelog](CHANGELOG.md)
 
 Play custom 128×64 animated GIF splash screens on your **Haute42** and RP2040-based arcade controllers running **GP2040-CE**.  
 Upload, preview, and update animations directly from your web browser without entering BOOTSEL mode or re-flashing firmware.
@@ -330,6 +330,12 @@ WebConfig の **「Configuration」** → **「Display Configuration」** 内に
 - 本プロジェクトは個人によるコミュニティプロジェクトであり、Haute42 公式および GP2040-CE 公式とは直接の関係はありません。
 - ファームウェアの書き込みには潜在的なリスクが伴います。必要に応じて既存の設定やファームウェアのバックアップを保持した上で実施してください。
 - コントローラーへ導入する画像・アニメーション素材の著作権および利用許諾については、利用者の責任において管理してください。
+
+---
+
+## 📝 Changelog / 更新履歴
+For release notes and architecture evolution history (v1.0.0 → v1.1.0), see [CHANGELOG.md](CHANGELOG.md).  
+バージョンごとの更新履歴やアーキテクチャの変遷（v1.0.0 → v1.1.0）については [CHANGELOG.md](CHANGELOG.md) をご覧ください。
 
 ---
 
