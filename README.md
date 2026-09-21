@@ -116,8 +116,6 @@ To keep the animation looping indefinitely instead of switching to the input dis
    - **Display Saver Timeout (minutes)**: Set to `0` (disables automatic screen sleep)
 4. Click **Save** at the bottom of the page and reconnect the controller.
 
-*(Note: Command-line utilities `patch_splash.py` and `upload_to_controller.py` are also provided in the repository for automated or headless workflows.)*
-
 ---
 
 ### GIF Specifications & Recommendations
@@ -268,8 +266,6 @@ BOOTSEL モードでの書き込みは、初回のファームウェア導入時
      *（`0` に設定することで Always-On モードとなり、ボタン入力画面に遷移せず無限ループします）*
    - **Display Saver Timeout (minutes)**: **`0`**（無操作時の画面自動消灯を無効化）
 4. ページ下部の **「Save」** ボタンを押し、コントローラーを再接続します。
-
-*(※補足: Python CLI スクリプト `patch_splash.py` および `upload_to_controller.py` もリポジトリ内に同梱されており、自動化スクリプト等からの書き込みも可能です。)*
 
 ---
 
