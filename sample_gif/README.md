@@ -18,7 +18,7 @@
 
 1. **Resolution / 解像度**:
    - Recommended: **128 x 64 pixels**.
-   - If other resolutions are used, the patcher automatically scales and centers it with nearest-neighbor interpolation.
+   - If other resolutions are used, WebConfig automatically scales and centers it with nearest-neighbor interpolation.
    - 推奨解像度は **128 x 64 ピクセル** です。異なるサイズの場合も自動でセンタリング＆アスペクト比維持で縮小配置されます。
 
 2. **Color Mode / カラー**:
