@@ -2,10 +2,6 @@
 *.uf2
 !base_firmware/*.uf2
 
-# User custom GIF folder (ignore contents but keep folder)
-custom_gif/*
-!custom_gif/.gitkeep
-
 # Python cache
 __pycache__/
 *.pyc

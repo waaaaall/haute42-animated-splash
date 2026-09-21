@@ -31,8 +31,8 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 :: 3. Run Patcher
-echo [INFO] Generating custom firmware from custom_gif/ (or sample_gif/)...
-python "%~dp0patch_splash.py"
+echo [INFO] Generating custom firmware from sample_gif/...
+python "%~dp0patch_splash.py" %*
 
 if %ERRORLEVEL% NEQ 0 (
     echo.
