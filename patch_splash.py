@@ -213,15 +213,11 @@ def build_patched_uf2(base_uf2_bytes: Optional[bytes], anim_blocks: List[dict]) 
     return bytes(output)
 
 
-def find_default_gif(search_dir: str = "custom_gif", fallback: str = "sample_gif/leverless_hadouken_loop.gif") -> str:
-    """Find the first .gif file in search_dir, or fall back to sample_gif."""
-    if os.path.exists(search_dir):
-        gifs = glob.glob(os.path.join(search_dir, "*.gif"))
-        if gifs:
-            return gifs[0]
-    if os.path.exists(fallback):
-        return fallback
-    raise FileNotFoundError("No GIF found in custom_gif/ and sample_gif fallback missing.")
+def find_default_gif(default_path: str = "sample_gif/leverless_hadouken_loop.gif") -> str:
+    """Find default sample GIF."""
+    if os.path.exists(default_path):
+        return default_path
+    raise FileNotFoundError(f"Default sample GIF not found at: {default_path}")
 
 
 def find_base_uf2(search_dir: str = "base_firmware") -> Optional[str]:
@@ -250,9 +246,8 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     gif_path = args.gif
     if not gif_path:
-        search_dir = os.path.join(script_dir, "custom_gif")
-        fallback = os.path.join(script_dir, "sample_gif", "leverless_hadouken_loop.gif")
-        gif_path = find_default_gif(search_dir, fallback)
+        default_sample = os.path.join(script_dir, "sample_gif", "leverless_hadouken_loop.gif")
+        gif_path = find_default_gif(default_sample)
 
     print("==================================================")
     print("   Haute42 Animated Splash UF2 Patcher")
